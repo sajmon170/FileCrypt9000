@@ -41,14 +41,14 @@ class MainMenuView:
 
         
     def __keygen(self):
-        directory = fd.askdirectory(
+        selected = fd.askdirectory(
             title='Select the save directory'
         )
 
-        if directory is None:
+        if not selected:
             return
 
-        self._selected_directory = directory
+        self._selected_directory = selected
         self._selected_action = WindowStates.KEYGEN
         self.__close()
 
