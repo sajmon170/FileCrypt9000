@@ -12,7 +12,7 @@ class MainMenuView:
         self._selected_directory = None
         
         self._window = window 
-        self._frame = ttk.LabelFrame(self._window, text="Wybór trybu", padding=10)
+        self._frame = ttk.LabelFrame(self._window, text="Mode select", padding=10)
         self.__setup_view()
 
         
@@ -20,13 +20,13 @@ class MainMenuView:
         self._frame.pack(fill='x', padx=20, pady=15, ipadx=50)
 
         
-        ttk.Button(self._frame, text='Szyfruj', command=self.__encrypt) \
+        ttk.Button(self._frame, text='Encrypt', command=self.__encrypt) \
             .pack(expand=True, fill='x', pady=(0, 10))
 
-        ttk.Button(self._frame, text='Odszyfruj', command=self.__decrypt) \
+        ttk.Button(self._frame, text='Decrypt', command=self.__decrypt) \
             .pack(expand=True, fill='x', pady=(0, 10))
 
-        ttk.Button(self._frame, text='Wygeneruj klucze', command=self.__keygen) \
+        ttk.Button(self._frame, text='Generate keys', command=self.__keygen) \
             .pack(expand=True, fill='x')
 
 
@@ -42,7 +42,7 @@ class MainMenuView:
         
     def __keygen(self):
         directory = fd.askdirectory(
-            title='Wybierz folder zapisu'
+            title='Select the save directory'
         )
 
         if directory is None:

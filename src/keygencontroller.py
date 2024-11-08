@@ -11,9 +11,9 @@ class KeygenController:
     def run(self, data):
         try:
             generate_keys(data.filename)
-            messagebox.showinfo(message="Klucze zostały wygenerowane pomyślnie.")
+            messagebox.showinfo(message="Keys generated successfully.")
         except FileExistsError:
-            messagebox.showerror(message="W tym katalogu istnieje już klucz.")
+            messagebox.showerror(message="This directory already contains a key.")
         
 
     def collect(self):

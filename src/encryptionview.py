@@ -14,7 +14,7 @@ class EncryptionView:
         self._selected_action = None
         
         self._window = window
-        self._frame = ttk.LabelFrame(self._window, text="Szyfrowanie", padding=10)
+        self._frame = ttk.LabelFrame(self._window, text="Encryption", padding=10)
         self._encrypt_btn = None
         self._file_name_text = tkinter.StringVar()
         self._key_name_text = tkinter.StringVar()
@@ -30,19 +30,19 @@ class EncryptionView:
         file_select_frame = ttk.Frame(self._frame)
         file_select_frame.pack()
 
-        ttk.Label(file_select_frame, text="Plik do zaszyfrowania") \
+        ttk.Label(file_select_frame, text="Encrypted file") \
            .grid(row=0, column=0)
 
-        ttk.Button(file_select_frame, text='Wybierz', command=self.__select_file) \
+        ttk.Button(file_select_frame, text='Select', command=self.__select_file) \
            .grid(row=0, column=1)
 
         ttk.Label(file_select_frame, textvariable=self._file_name_text) \
            .grid(row=1, column=0)
         
-        ttk.Label(file_select_frame, text="Klucz publiczny") \
+        ttk.Label(file_select_frame, text="Public key") \
            .grid(row=2, column=0)
 
-        ttk.Button(file_select_frame, text='Wybierz', command=self.__select_key) \
+        ttk.Button(file_select_frame, text='Select', command=self.__select_key) \
            .grid(row=2, column=1)
 
         ttk.Label(file_select_frame, textvariable=self._key_name_text) \
@@ -51,12 +51,12 @@ class EncryptionView:
         for widget in file_select_frame.winfo_children():
             widget.grid_configure(padx=10, pady=(0, 10))
 
-        self._encrypt_btn = ttk.Button(self._frame, text='Szyfruj',
+        self._encrypt_btn = ttk.Button(self._frame, text='Encrypt',
                                        command=self.__encrypt)
         self._encrypt_btn.pack(expand=True, fill='x', pady=(0, 10))
         self.__disable_btn()
 
-        go_back_btn = ttk.Button(self._frame, text="Wróć do menu",
+        go_back_btn = ttk.Button(self._frame, text="Return to menu",
                                  command=self.__main_menu, style='Info.TButton')
         go_back_btn.pack(expand=True, fill='x')
 
@@ -76,7 +76,7 @@ class EncryptionView:
 
     def __select_file(self):
         selected = fd.askopenfilename(
-            title='Wybierz plik do zaszyfrowania',
+            title='Select the file to encrypt',
             filetypes=(('all files', '*'),)
         )
 
@@ -91,7 +91,7 @@ class EncryptionView:
 
     def __select_key(self):
         selected = fd.askopenfilename(
-            title='Wybierz klucz publiczny',
+            title='Select the public key',
             filetypes=(('pem files', '*.pem'),)
         )
 

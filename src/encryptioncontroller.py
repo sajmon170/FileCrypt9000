@@ -11,13 +11,13 @@ class EncryptionController:
     def run(self, data):
         try:
             encrypt(data.filename, data.key)
-            messagebox.showinfo(message="Plik zaszyfrowano pomyślnie.")
+            messagebox.showinfo(message="File encrypted successfully.")
         except FileNotFoundError:
-            messagebox.showerror(message="Wybrany plik nie istnieje.")
+            messagebox.showerror(message="Selected file does not exist.")
         except ValueError:
-            messagebox.showerror(message="Ten klucz nie pasuje do danych.")
+            messagebox.showerror(message="This key does not match the data.")
         except TypeError:
-            messagebox.showerror(message="To nie jest klucz publiczny.")
+            messagebox.showerror(message="This is not a public key.")
         
 
     def collect(self):

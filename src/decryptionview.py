@@ -14,7 +14,7 @@ class DecryptionView:
         self._selected_action = None
         
         self._window = window
-        self._frame = ttk.LabelFrame(self._window, text="Odszyfrowywanie", padding=10)
+        self._frame = ttk.LabelFrame(self._window, text="Decryption", padding=10)
         self._decrypt_btn = None
         self._file_name_text = tkinter.StringVar()
         self._key_name_text = tkinter.StringVar()
@@ -28,19 +28,19 @@ class DecryptionView:
         file_select_frame = ttk.Frame(self._frame)
         file_select_frame.pack()
 
-        ttk.Label(file_select_frame, text="Plik do odszyfrowania") \
+        ttk.Label(file_select_frame, text="Decrypted file") \
            .grid(row=0, column=0)
 
-        ttk.Button(file_select_frame, text='Wybierz', command=self.__select_file) \
+        ttk.Button(file_select_frame, text='Select', command=self.__select_file) \
            .grid(row=0, column=1)
 
         ttk.Label(file_select_frame, textvariable=self._file_name_text) \
            .grid(row=1, column=0)
         
-        ttk.Label(file_select_frame, text="Klucz prywatny") \
+        ttk.Label(file_select_frame, text="Private key") \
            .grid(row=2, column=0)
 
-        ttk.Button(file_select_frame, text='Wybierz', command=self.__select_key) \
+        ttk.Button(file_select_frame, text='Select', command=self.__select_key) \
            .grid(row=2, column=1)
 
         ttk.Label(file_select_frame, textvariable=self._key_name_text) \
@@ -49,12 +49,12 @@ class DecryptionView:
         for widget in file_select_frame.winfo_children():
             widget.grid_configure(padx=10, pady=(0, 10))
 
-        self._decrypt_btn = ttk.Button(self._frame, text='Odszyfruj',
+        self._decrypt_btn = ttk.Button(self._frame, text='Decrypt',
                                        command=self.__decrypt)
         self._decrypt_btn.pack(expand=True, fill='x', pady=(0, 10))
         self.__disable_btn()
 
-        go_back_btn = ttk.Button(self._frame, text="Wróć do menu",
+        go_back_btn = ttk.Button(self._frame, text="Return to menu",
                                  command=self.__main_menu, style='Info.TButton')
         go_back_btn.pack(expand=True, fill='x')
 

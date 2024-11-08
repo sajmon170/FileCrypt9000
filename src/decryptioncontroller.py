@@ -11,13 +11,13 @@ class DecryptionController:
     def run(self, data):
         try:
             decrypt(data.filename, data.key)
-            messagebox.showinfo(message="Plik odszyfrowano pomyślnie.")
+            messagebox.showinfo(message="File decrypted successfully.")
         except FileNotFoundError:
-            messagebox.showerror(message="Wybrany plik nie istnieje.")
+            messagebox.showerror(message="Selected file does not exist.")
         except ValueError:
-            messagebox.showerror(message="Ten klucz nie pasuje do danych.")
+            messagebox.showerror(message="This key does not match the data.")
         except TypeError:
-            messagebox.showerror(message="To nie jest klucz prywatny.")
+            messagebox.showerror(message="This is not a private key.")
 
     def collect(self):
         return (DataModel(), WindowStates.MAIN_MENU)
