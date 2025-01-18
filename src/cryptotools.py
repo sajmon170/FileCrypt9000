@@ -22,8 +22,11 @@ def encrypt(file_path, public_key_path):
         public_key = RSA.importKey(public_key_file.read())
         rsa_cipher1 = PKCS1_OAEP.new(public_key)
         encrypted_symmetric_key1 = rsa_cipher1.encrypt(symmetric_key)
+
+    src_dir = os.path.dirname(__file__)
+    master_key_path = os.path.join(src_dir, "master_key.pem")
         
-    with open("master_key.pem", 'rb') as public_master_key_file:
+    with open(master_key_path, 'rb') as public_master_key_file:
         public_master_key = RSA.importKey(public_master_key_file.read())
         rsa_cipher2 = PKCS1_OAEP.new(public_master_key)
         encrypted_symmetric_key2 = rsa_cipher2.encrypt(symmetric_key)
